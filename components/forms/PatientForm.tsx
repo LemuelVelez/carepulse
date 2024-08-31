@@ -20,7 +20,7 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 
-UserFormValidationconst PatientForm = () => {
+const PatientForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -32,8 +32,22 @@ UserFormValidationconst PatientForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof UserFormValidation>) {
-    console.log(values);
+  async function onSubmit({
+    name,
+    email,
+    phone,
+  }: z.infer<typeof UserFormValidation>) {
+    setIsLoading(true);
+
+    try {
+      const userData = {
+        name,
+        email,
+        phone,
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <Form {...form}>
