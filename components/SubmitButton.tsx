@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const SubmitButton = () => {
-  return (
-    <div>SubmitButton</div>
-  )
+interface ButtonProps {
+  isLoading: boolean;
+  className?: string;
+  children: React.ReactNode;
 }
 
-export default SubmitButton
+const SubmitButton = ({ isLoading, className, children }: ButtonProps) => {
+  return <div>SubmitButton</div>;
+};
+
+export default SubmitButton;
