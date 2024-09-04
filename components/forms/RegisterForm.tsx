@@ -13,6 +13,7 @@ import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { GenderOptions } from "@/constants";
+import { Label } from "../ui/label";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -98,8 +99,9 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.DATE_PICKER}
             control={form.control}
             name="birthDate"
-            label="Date of Birth"
+            label="Date of birth"
           />
+
           <CustomFormField
             fieldType={FormFieldType.SKELETON}
             control={form.control}
@@ -112,12 +114,12 @@ const RegisterForm = ({ user }: { user: User }) => {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
-                  {GenderOptions.map((option) => (
-                    <div key={option} className="radio-group">
+                  {GenderOptions.map((option, i) => (
+                    <div key={option + i} className="radio-group">
                       <RadioGroupItem value={option} id={option} />
-                      <label htmlFor={option} className="cursor-point">
+                      <Label htmlFor={option} className="cursor-pointer">
                         {option}
-                      </label>
+                      </Label>
                     </div>
                   ))}
                 </RadioGroup>
