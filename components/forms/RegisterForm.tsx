@@ -275,11 +275,9 @@ const RegisterForm = ({ user }: { user: User }) => {
         <CustomFormField
           fieldType={FormFieldType.SKELETON}
           control={form.control}
-          name="gender"
-          label="Gender"
-          renderSkeleton={(field) => (
-        
-          )}
+          name="identificationDocument"
+          label="Scanned copy of Identification Document"
+          renderSkeleton={(field) => <FormControl>FileUpload</FormControl>}
         />
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
