@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Doctors, GenderOptions } from "@/constants";
+import { Doctors, GenderOptions, IdentificationTypes } from "@/constants";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
@@ -116,8 +116,8 @@ const RegisterForm = ({ user }: { user: User }) => {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
-                  {GenderOptions.map((option, i) => (
-                    <div key={option + i} className="radio-group">
+                  {GenderOptions.map((option) => (
+                    <div key={option} className="radio-group">
                       <RadioGroupItem value={option} id={option} />
                       <Label htmlFor={option} className="cursor-pointer">
                         {option}
@@ -249,6 +249,38 @@ const RegisterForm = ({ user }: { user: User }) => {
             <h2 className="sub-header">Identification and Verification</h2>
           </div>
         </section>
+
+        <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          control={form.control}
+          name="identificationType"
+          label="Identification Type"
+          placeholder="Select an identification type"
+        >
+          {IdentificationTypes.map((type) => (
+            <SelectItem key={type} value={type}>
+              {type}
+            </SelectItem>
+          ))}
+        </CustomFormField>
+
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          label="Identification Number"
+          name="identificationNumber"
+          placeholder="123456789"
+        />
+
+        <CustomFormField
+          fieldType={FormFieldType.SKELETON}
+          control={form.control}
+          name="gender"
+          label="Gender"
+          renderSkeleton={(field) => (
+        
+          )}
+        />
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
