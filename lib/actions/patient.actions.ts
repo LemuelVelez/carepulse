@@ -48,13 +48,21 @@ export const registerPatient = async ({ identificationDocument, ...patient }: Re
             )
             file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile)
         }
+
+        console.log(
+            {
+                identificationDocument: file?.$id || null,
+                identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`
+            }
+        )
+
         const newPatient = await databases.createDocument(
             DATABASE_ID!,
             PATIENT_COLLECTION_ID!,
             ID.unique(),
             {
-                identificationDocument: file?.$id || null,
-                identificationDocumentNameUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`,
+                identificationDocumentId: file?.$id || null,
+                identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`,
                 ...patient
             }
         )

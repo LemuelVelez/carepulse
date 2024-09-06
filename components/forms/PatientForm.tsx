@@ -86,7 +86,7 @@ const PatientForm = () => {
           control={form.control}
           name="phone"
           label="Phone number"
-          placeholder="(+63) 912-345-6789"
+          placeholder="0912-345-6789"
         />
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
