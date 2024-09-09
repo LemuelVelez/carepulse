@@ -130,7 +130,14 @@ const AppointmentForm = ({
           />
         )}
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <SubmitButton
+          isLoading={isLoading}
+          className={`${
+            type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"
+          }w-full`}
+        >
+          Get Started
+        </SubmitButton>
       </form>
     </Form>
   );
