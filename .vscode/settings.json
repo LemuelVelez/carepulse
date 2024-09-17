@@ -2,6 +2,7 @@
     "editor.guides.bracketPairs": true,
     "cSpell.words": [
         "appwrite",
+        "clsx",
         "gifs"
     ]
 }
