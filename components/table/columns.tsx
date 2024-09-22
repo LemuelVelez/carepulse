@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
+import StatusBadge from "../StatusBadge";
 export type Payment = {
   id: string;
   amount: number;
@@ -23,8 +24,24 @@ export type Payment = {
 
 export const columns: ColumnDef<Payment>[] = [
   {
+    header: "ID",
+    cell: ({ row }) => <p className="text-14-medium">{row.index + 1}</p>,
+  },
+  {
+    accessorKey: "patient",
+    header: "Patient",
+    cell: ({ row }) => (
+      <p className="text-14-medium">{row.original.patient.name}</p>
+    ),
+  },
+  {
     accessorKey: "status",
     header: "Status",
+    cell: ({ row }) => (
+      <div className="min-w-[115px]">
+        <StatusBadge status={row.original.status} />
+      </div>
+    ),
   },
   {
     accessorKey: "email",
